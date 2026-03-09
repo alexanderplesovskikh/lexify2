@@ -1,0 +1,21 @@
+{
+  "short_name": "Lexiqo",
+  "name": "Lexiqo",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "categories": [
+    "productivity",
+    "utilities",
+    "social"
+  ],
+  "description": "Check documents for free",
+  "icons": [
+    {
+      "src": "img/fav.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

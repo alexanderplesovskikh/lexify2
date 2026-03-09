@@ -1,0 +1,2498 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="yandex-verification" content="247f21928a1f1467" />
+  <title>Lexify — Проверка документов</title>
+
+
+
+  <link rel="manifest" href="https://check.lexiqo.ru/static/file/manifest.json" crossorigin="use-credentials" />
+
+  <link rel="icon" type="image/x-icon" href="https://check.lexiqo.ru/static/img/fav.png">
+  <link rel="apple-touch-icon" href="https://check.lexiqo.ru/static/img/fav.ico">
+  <link rel="icon" type="image/svg+xml" href="https://check.lexiqo.ru/static/img/fav.svg">
+
+  <meta name="description" content="Проверим курсовую или диплом за секунды!" />
+  <meta name="application-name" content="Lexify" lang="ru" />
+  <meta name="application-name" content="Lexify" lang="en" />
+  <meta name="keywords" content="spellcheck,grammar,document" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Alexander Plesovskikh" />
+
+  <meta property="og:title" content="Lexify" />
+  <meta property="og:description" content="Проверим курсовую или диплом за секунды!" />
+  <meta property="og:image" content="https://check.lexiqo.ru/static/img/poster.jpg" />
+  <meta property="og:url" content="https://check.lexiqo.ru" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Проверим курсовую или диплом за секунды!" />
+  <meta property="og:locale" content="ru" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lexify" />
+  <meta name="twitter:description" content="Проверим курсовую или диплом за секунды!" />
+  <meta name="twitter:image" content="https://check.lexiqo.ru/static/img/poster.jpg" />
+
+  <style>
+    /* Bootstrap-like Grid System with CSS Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+      /* Bootstrap default gutter */
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      padding-right: 12px;
+      padding-left: 12px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    /* Responsive containers */
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1320px;
+      }
+    }
+
+    /* Row - grid wrapper */
+    .row {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    /* Column classes */
+    .col-1 {
+      grid-column: span 1;
+    }
+
+    .col-2 {
+      grid-column: span 2;
+    }
+
+    .col-3 {
+      grid-column: span 3;
+    }
+
+    .col-4 {
+      grid-column: span 4;
+    }
+
+    .col-5 {
+      grid-column: span 5;
+    }
+
+    .col-6 {
+      grid-column: span 6;
+    }
+
+    .col-7 {
+      grid-column: span 7;
+    }
+
+    .col-8 {
+      grid-column: span 8;
+    }
+
+    .col-9 {
+      grid-column: span 9;
+    }
+
+    .col-10 {
+      grid-column: span 10;
+    }
+
+    .col-11 {
+      grid-column: span 11;
+    }
+
+    .col-12 {
+      grid-column: span 12;
+    }
+
+    /* Responsive columns */
+    @media (min-width: 576px) {
+      .col-sm-1 {
+        grid-column: span 1;
+      }
+
+      .col-sm-2 {
+        grid-column: span 2;
+      }
+
+      .col-sm-3 {
+        grid-column: span 3;
+      }
+
+      .col-sm-4 {
+        grid-column: span 4;
+      }
+
+      .col-sm-5 {
+        grid-column: span 5;
+      }
+
+      .col-sm-6 {
+        grid-column: span 6;
+      }
+
+      .col-sm-7 {
+        grid-column: span 7;
+      }
+
+      .col-sm-8 {
+        grid-column: span 8;
+      }
+
+      .col-sm-9 {
+        grid-column: span 9;
+      }
+
+      .col-sm-10 {
+        grid-column: span 10;
+      }
+
+      .col-sm-11 {
+        grid-column: span 11;
+      }
+
+      .col-sm-12 {
+        grid-column: span 12;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .col-md-1 {
+        grid-column: span 1;
+      }
+
+      .col-md-2 {
+        grid-column: span 2;
+      }
+
+      .col-md-3 {
+        grid-column: span 3;
+      }
+
+      .col-md-4 {
+        grid-column: span 4;
+      }
+
+      .col-md-5 {
+        grid-column: span 5;
+      }
+
+      .col-md-6 {
+        grid-column: span 6;
+      }
+
+      .col-md-7 {
+        grid-column: span 7;
+      }
+
+      .col-md-8 {
+        grid-column: span 8;
+      }
+
+      .col-md-9 {
+        grid-column: span 9;
+      }
+
+      .col-md-10 {
+        grid-column: span 10;
+      }
+
+      .col-md-11 {
+        grid-column: span 11;
+      }
+
+      .col-md-12 {
+        grid-column: span 12;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .col-lg-1 {
+        grid-column: span 1;
+      }
+
+      .col-lg-2 {
+        grid-column: span 2;
+      }
+
+      .col-lg-3 {
+        grid-column: span 3;
+      }
+
+      .col-lg-4 {
+        grid-column: span 4;
+      }
+
+      .col-lg-5 {
+        grid-column: span 5;
+      }
+
+      .col-lg-6 {
+        grid-column: span 6;
+      }
+
+      .col-lg-7 {
+        grid-column: span 7;
+      }
+
+      .col-lg-8 {
+        grid-column: span 8;
+      }
+
+      .col-lg-9 {
+        grid-column: span 9;
+      }
+
+      .col-lg-10 {
+        grid-column: span 10;
+      }
+
+      .col-lg-11 {
+        grid-column: span 11;
+      }
+
+      .col-lg-12 {
+        grid-column: span 12;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .col-xl-1 {
+        grid-column: span 1;
+      }
+
+      .col-xl-2 {
+        grid-column: span 2;
+      }
+
+      .col-xl-3 {
+        grid-column: span 3;
+      }
+
+      .col-xl-4 {
+        grid-column: span 4;
+      }
+
+      .col-xl-5 {
+        grid-column: span 5;
+      }
+
+      .col-xl-6 {
+        grid-column: span 6;
+      }
+
+      .col-xl-7 {
+        grid-column: span 7;
+      }
+
+      .col-xl-8 {
+        grid-column: span 8;
+      }
+
+      .col-xl-9 {
+        grid-column: span 9;
+      }
+
+      .col-xl-10 {
+        grid-column: span 10;
+      }
+
+      .col-xl-11 {
+        grid-column: span 11;
+      }
+
+      .col-xl-12 {
+        grid-column: span 12;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .col-xxl-1 {
+        grid-column: span 1;
+      }
+
+      .col-xxl-2 {
+        grid-column: span 2;
+      }
+
+      .col-xxl-3 {
+        grid-column: span 3;
+      }
+
+      .col-xxl-4 {
+        grid-column: span 4;
+      }
+
+      .col-xxl-5 {
+        grid-column: span 5;
+      }
+
+      .col-xxl-6 {
+        grid-column: span 6;
+      }
+
+      .col-xxl-7 {
+        grid-column: span 7;
+      }
+
+      .col-xxl-8 {
+        grid-column: span 8;
+      }
+
+      .col-xxl-9 {
+        grid-column: span 9;
+      }
+
+      .col-xxl-10 {
+        grid-column: span 10;
+      }
+
+      .col-xxl-11 {
+        grid-column: span 11;
+      }
+
+      .col-xxl-12 {
+        grid-column: span 12;
+      }
+    }
+
+    /* Auto layout columns */
+    .col-auto {
+      grid-column: auto;
+    }
+
+    .col {
+      grid-column: auto / span 1;
+    }
+
+    /* Gutters modifiers */
+    .g-0 {
+      gap: 0;
+    }
+
+    .g-1 {
+      gap: 4px;
+    }
+
+    .g-2 {
+      gap: 8px;
+    }
+
+    .g-3 {
+      gap: 16px;
+    }
+
+    .g-4 {
+      gap: 24px;
+    }
+
+    .g-5 {
+      gap: 48px;
+    }
+
+    .gx-0 {
+      column-gap: 0;
+    }
+
+    .gx-1 {
+      column-gap: 4px;
+    }
+
+    .gx-2 {
+      column-gap: 8px;
+    }
+
+    .gx-3 {
+      column-gap: 16px;
+    }
+
+    .gx-4 {
+      column-gap: 24px;
+    }
+
+    .gx-5 {
+      column-gap: 48px;
+    }
+
+    .gy-0 {
+      row-gap: 0;
+    }
+
+    .gy-1 {
+      row-gap: 4px;
+    }
+
+    .gy-2 {
+      row-gap: 8px;
+    }
+
+    .gy-3 {
+      row-gap: 16px;
+    }
+
+    .gy-4 {
+      row-gap: 24px;
+    }
+
+    .gy-5 {
+      row-gap: 48px;
+    }
+
+    /* Offset classes */
+    .offset-1 {
+      margin-left: 8.333333%;
+    }
+
+    .offset-2 {
+      margin-left: 16.666667%;
+    }
+
+    .offset-3 {
+      margin-left: 25%;
+    }
+
+    .offset-4 {
+      margin-left: 33.333333%;
+    }
+
+    .offset-5 {
+      margin-left: 41.666667%;
+    }
+
+    .offset-6 {
+      margin-left: 50%;
+    }
+
+    .offset-7 {
+      margin-left: 58.333333%;
+    }
+
+    .offset-8 {
+      margin-left: 66.666667%;
+    }
+
+    .offset-9 {
+      margin-left: 75%;
+    }
+
+    .offset-10 {
+      margin-left: 83.333333%;
+    }
+
+    .offset-11 {
+      margin-left: 91.666667%;
+    }
+
+    /* Responsive offsets */
+    @media (min-width: 576px) {
+      .offset-sm-1 {
+        margin-left: 8.333333%;
+      }
+
+      .offset-sm-2 {
+        margin-left: 16.666667%;
+      }
+
+      .offset-sm-3 {
+        margin-left: 25%;
+      }
+
+      .offset-sm-4 {
+        margin-left: 33.333333%;
+      }
+
+      .offset-sm-5 {
+        margin-left: 41.666667%;
+      }
+
+      .offset-sm-6 {
+        margin-left: 50%;
+      }
+
+      .offset-sm-7 {
+        margin-left: 58.333333%;
+      }
+
+      .offset-sm-8 {
+        margin-left: 66.666667%;
+      }
+
+      .offset-sm-9 {
+        margin-left: 75%;
+      }
+
+      .offset-sm-10 {
+        margin-left: 83.333333%;
+      }
+
+      .offset-sm-11 {
+        margin-left: 91.666667%;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .offset-md-1 {
+        margin-left: 8.333333%;
+      }
+
+      .offset-md-2 {
+        margin-left: 16.666667%;
+      }
+
+      .offset-md-3 {
+        margin-left: 25%;
+      }
+
+      .offset-md-4 {
+        margin-left: 33.333333%;
+      }
+
+      .offset-md-5 {
+        margin-left: 41.666667%;
+      }
+
+      .offset-md-6 {
+        margin-left: 50%;
+      }
+
+      .offset-md-7 {
+        margin-left: 58.333333%;
+      }
+
+      .offset-md-8 {
+        margin-left: 66.666667%;
+      }
+
+      .offset-md-9 {
+        margin-left: 75%;
+      }
+
+      .offset-md-10 {
+        margin-left: 83.333333%;
+      }
+
+      .offset-md-11 {
+        margin-left: 91.666667%;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .offset-lg-1 {
+        margin-left: 8.333333%;
+      }
+
+      .offset-lg-2 {
+        margin-left: 16.666667%;
+      }
+
+      .offset-lg-3 {
+        margin-left: 25%;
+      }
+
+      .offset-lg-4 {
+        margin-left: 33.333333%;
+      }
+
+      .offset-lg-5 {
+        margin-left: 41.666667%;
+      }
+
+      .offset-lg-6 {
+        margin-left: 50%;
+      }
+
+      .offset-lg-7 {
+        margin-left: 58.333333%;
+      }
+
+      .offset-lg-8 {
+        margin-left: 66.666667%;
+      }
+
+      .offset-lg-9 {
+        margin-left: 75%;
+      }
+
+      .offset-lg-10 {
+        margin-left: 83.333333%;
+      }
+
+      .offset-lg-11 {
+        margin-left: 91.666667%;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .offset-xl-1 {
+        margin-left: 8.333333%;
+      }
+
+      .offset-xl-2 {
+        margin-left: 16.666667%;
+      }
+
+      .offset-xl-3 {
+        margin-left: 25%;
+      }
+
+      .offset-xl-4 {
+        margin-left: 33.333333%;
+      }
+
+      .offset-xl-5 {
+        margin-left: 41.666667%;
+      }
+
+      .offset-xl-6 {
+        margin-left: 50%;
+      }
+
+      .offset-xl-7 {
+        margin-left: 58.333333%;
+      }
+
+      .offset-xl-8 {
+        margin-left: 66.666667%;
+      }
+
+      .offset-xl-9 {
+        margin-left: 75%;
+      }
+
+      .offset-xl-10 {
+        margin-left: 83.333333%;
+      }
+
+      .offset-xl-11 {
+        margin-left: 91.666667%;
+      }
+    }
+
+    /* Order classes */
+    .order-1 {
+      order: 1;
+    }
+
+    .order-2 {
+      order: 2;
+    }
+
+    .order-3 {
+      order: 3;
+    }
+
+    .order-4 {
+      order: 4;
+    }
+
+    .order-5 {
+      order: 5;
+    }
+
+    .order-6 {
+      order: 6;
+    }
+
+    .order-7 {
+      order: 7;
+    }
+
+    .order-8 {
+      order: 8;
+    }
+
+    .order-9 {
+      order: 9;
+    }
+
+    .order-10 {
+      order: 10;
+    }
+
+    .order-11 {
+      order: 11;
+    }
+
+    .order-12 {
+      order: 12;
+    }
+
+    /* Alignment utilities */
+    .justify-content-start {
+      justify-content: start;
+    }
+
+    .justify-content-end {
+      justify-content: end;
+    }
+
+    .justify-content-center {
+      justify-content: center;
+    }
+
+    .justify-content-between {
+      justify-content: space-between;
+    }
+
+    .justify-content-around {
+      justify-content: space-around;
+    }
+
+    .justify-content-evenly {
+      justify-content: space-evenly;
+    }
+
+    .align-items-start {
+      align-items: start;
+    }
+
+    .align-items-end {
+      align-items: end;
+    }
+
+    .align-items-center {
+      align-items: center;
+    }
+
+    .align-items-baseline {
+      align-items: baseline;
+    }
+
+    .align-items-stretch {
+      align-items: stretch;
+    }
+
+    /* No gutters */
+    .row.no-gutters {
+      gap: 0;
+    }
+  </style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background-color: #f5f5f7;
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    .containerB {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0066cc;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      color: #86868b;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e5e5e7;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #1d1d1f;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title i {
+      color: #0066cc;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+
+    .setting-group {
+      margin-bottom: 0px;
+    }
+
+    .setting-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: #515154;
+    }
+
+    .select-field {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #d1d1d6;
+      background: #f5f5f7;
+      font-size: 16px;
+      color: #1d1d1f;
+      cursor: pointer;
+      transition: all 0.2s;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+    }
+
+    .select-field:hover {
+      background-color: #e5e5e7;
+      border-color: #0066cc;
+    }
+
+    .select-field:focus {
+      outline: none;
+      border-color: #0066cc;
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .file-upload {
+      border: 2px dashed #d1d1d6;
+      border-radius: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .file-upload:hover {
+      border-color: #0066cc;
+      background: #f8f9ff;
+    }
+
+    .file-upload.dragover {
+      border-color: #0066cc;
+      background: #e8f1fd;
+    }
+
+    .upload-icon {
+      font-size: 48px;
+      color: #86868b;
+      margin-bottom: 15px;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .file-list {
+      margin-top: 20px;
+    }
+
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #f8f9ff;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #e5e5e7;
+    }
+
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .file-icon {
+      color: #0066cc;
+      font-size: 20px;
+    }
+
+    .file-name {
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .file-size {
+      color: #86868b;
+      font-size: 14px;
+      margin-left: auto;
+      padding-left: 10px;
+    }
+
+    .remove-file {
+      background: none;
+      border: none;
+      color: #ff3b30;
+      cursor: pointer;
+      padding: 5px;
+      font-size: 18px;
+    }
+
+    .button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background: #0055b3;
+      transform: translateY(-1px);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .button:disabled {
+      background: #c7c7cc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .button-secondary {
+      background: #f5f5f7;
+      color: #1d1d1f;
+      border: 1px solid #d1d1d6;
+    }
+
+    .button-secondary:hover {
+      background: #e5e5e7;
+    }
+
+    .result-section {
+      display: none;
+    }
+
+    .result-item {
+      background: #f8f9ff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border: 1px solid #e5e5e7;
+    }
+
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .result-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .status-processing {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .status-ready {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .result-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e5e5e7;
+      transition: all 0.2s;
+    }
+
+    .result-link:hover {
+      background: #f8f9ff;
+      border-color: #0066cc;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: #e5e5e7;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #0066cc;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .status-message {
+      text-align: center;
+      padding: 20px;
+      color: #86868b;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #0066cc;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 16px 24px;
+      border-radius: 10px;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: none;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      max-width: 400px;
+      animation: slideIn 0.3s ease;
+    }
+
+    .notification.success {
+      border-left: 4px solid #34c759;
+    }
+
+    .notification.error {
+      border-left: 4px solid #ff3b30;
+    }
+
+    .notification.warning {
+      border-left: 4px solid #ff9500;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .containerB {
+        padding: 15px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .settings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+
+
+    .navbar-wrapper {
+      width: 100%;
+      background: transparent;
+      backdrop-filter: none;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .navbar {
+      background-color: #ffffffdd;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 60px;
+      /* pill shape */
+      padding: 0.6rem 1.2rem;
+      box-shadow: 0 12px 28px -8px rgba(0, 32, 64, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: all 0.2s ease;
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .brand {
+      font-size: 1.7rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1e2b4f, #2c3e77);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 0.2rem 0.8rem 0.2rem 0.3rem;
+      border-radius: 40px;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .brand i {
+      font-size: 1.8rem;
+      color: #2c3e77;
+      background: rgba(44, 62, 119, 0.1);
+      border-radius: 50%;
+      padding: 0.3rem;
+    }
+
+    .nav-toggle {
+      display: none;
+      /* hidden on desktop */
+      font-size: 1.9rem;
+      color: #1e2b4f;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px transparent rgba(44, 62, 119, 0.2);
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: 0.15s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .nav-toggle:hover {
+      background: #ffffff;
+      border-color: #2c3e77;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      padding: 0.3rem 0.2rem;
+    }
+
+    .nav-link {
+      font-size: 1.2rem;
+      font-weight: 520;
+      padding: 0.65rem 1.2rem;
+      border-radius: 40px;
+      /* rounded buttons inside navbar */
+      background: transparent;
+      color: #1e293b;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+
+    .nav-link i {
+      font-size: 1rem;
+      color: #4f5e7b;
+    }
+
+    .nav-link:hover {
+      background: rgba(44, 62, 119, 0.08);
+      border-color: rgba(44, 62, 119, 0.2);
+      color: #0f172b;
+    }
+
+    .profile-item {
+      margin-left: 0.3rem;
+    }
+
+    .profile-link {
+      background: #ffffff;
+      border: 1px solid rgba(44, 62, 119, 0.25);
+      border-radius: 50px;
+      padding: 0.55rem 1.2rem 0.55rem 1rem;
+      font-weight: 550;
+      gap: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .profile-link i {
+      font-size: 1.4rem;
+      color: #1e2b4f;
+    }
+
+    .profile-link:hover {
+      background: #f5f8ff;
+      border-color: #2c3e77;
+    }
+
+    @media screen and (max-width: 780px) {
+      .navbar {
+        border-radius: 40px;
+        padding: 0.5rem 1rem;
+      }
+
+      .navbar-container {
+        position: relative;
+      }
+
+      .nav-toggle {
+        display: flex;
+        order: 3;
+      }
+
+      .brand {
+        order: 1;
+        font-size: 1.5rem;
+      }
+
+      .nav-menu {
+        order: 4;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        margin-top: 1rem;
+        padding: 1rem 0.8rem;
+        border-radius: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        display: none;
+        /* hidden until toggle */
+      }
+
+      #nav-toggle-checkbox:checked~.nav-menu {
+        display: flex;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 0.3rem;
+      }
+
+      .nav-item {
+        width: 100%;
+        padding: 0.2rem 0;
+      }
+
+      .nav-link {
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0.9rem 1.5rem;
+        background: rgba(255, 255, 255, 0.3);
+        border: 1px solid transparent;
+      }
+
+      .profile-item {
+        margin-left: 0;
+        margin-top: 0.3rem;
+        width: 100%;
+      }
+
+      .profile-link {
+        justify-content: center;
+        background: #ffffffcc;
+        width: 100%;
+      }
+    }
+
+
+
+
+    /*Banner*/
+
+    /* Анимированный баннер для главной страницы */
+    .hero-banner {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      margin-bottom: 0rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      animation: bannerAppear 0.8s ease-out;
+    }
+
+    .blueban {
+      background: linear-gradient(135deg, #667eea 0%, #2490dd 100%);
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+      animation: rotate 20s linear infinite;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: inherit;
+      filter: blur(20px);
+      opacity: 0.4;
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .banner-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: slideUp 0.6s ease-out 0.2s both;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      animation: slideUp 0.6s ease-out 0.3s both;
+    }
+
+    .banner-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+      animation: slideUp 0.6s ease-out 0.4s both;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .banner-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      animation: slideUp 0.6s ease-out 0.5s both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-button:active {
+      transform: translateY(0);
+    }
+
+    .banner-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(102, 126, 234, 0.2);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .banner-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .floating-element {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-element:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .floating-element:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      bottom: 10%;
+      right: 5%;
+      animation-delay: 2s;
+    }
+
+    .floating-element:nth-child(3) {
+      width: 70px;
+      height: 70px;
+      top: 40%;
+      right: 15%;
+      animation-delay: 1s;
+    }
+
+    @keyframes bannerAppear {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Медиа-запросы для мобильных устройств */
+    @media (max-width: 768px) {
+      .hero-banner {
+        padding: 2rem 1rem;
+      }
+
+      .banner-title {
+        font-size: 1.8rem;
+      }
+
+      .banner-stats {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .floating-element {
+        opacity: 0.3;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+
+
+    <div class="navbar-wrapper">
+
+      <nav class="navbar">
+        <div class="navbar-container">
+          <input type="checkbox" id="nav-toggle-checkbox" style="display: none;">
+
+          <a href="/" class="brand">
+            <i class="fas fa-check"></i> Lexify
+          </a>
+
+          <label for="nav-toggle-checkbox" class="nav-toggle" aria-label="toggle menu">
+            <i class="fas fa-bars"></i>
+          </label>
+
+          <div class="nav-menu">
+            <ul class="nav-links">
+              <li class="nav-item"><a href="/" class="nav-link">старт</a></li>
+              <li class="nav-item"><a href="/doc" class="nav-link">проверить</a></li>
+              <li class="nav-item"><a href="/faq" class="nav-link">faq</a></li>
+              <li class="nav-item"><a href="/stats" class="nav-link">данные</a></li>
+              <li class="nav-item"><a href="https://app.lexiqo.ru/oldcheck" class="nav-link">прошлая версия</a></li>
+            </ul>
+
+            <div class="profile-item">
+              <a href="/profile" class="nav-link profile-link">
+                <i class="fas fa-user-circle"></i> профиль
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+
+    <div style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;">
+      <a href="https://chat.lexiqo.ru"
+        style="display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 15px 30px -8px rgba(102, 126, 234, 0.5); text-decoration: none;"
+        onmouseover="this.style.transform='scale(1.12) rotate(5deg)'; this.style.boxShadow='0 20px 35px -5px rgba(102, 126, 234, 0.7)'"
+        onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 15px 30px -8px rgba(102, 126, 234, 0.5)'"
+        target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-comment" style="font-size: 28px; color: white;"></i>
+      </a>
+    </div>
+
+
+
+
+    <div class="row">
+
+
+      <div class="col-12">
+        <div class="hero-banner">
+          <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+          </div>
+          <div class="banner-content">
+            <h1 class="banner-title" style="margin-bottom: 0px;">Советы к диплому</h1>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== Lexify-style CONTENT (после шапки) ===== -->
+    <style>
+      :root {
+        --lx-bg: #f5f5f7;
+        --lx-card: #ffffff;
+        --lx-border: #e5e5e7;
+        --lx-text: #1d1d1f;
+        --lx-muted: #515154;
+        --lx-accent: #6d5bd0;
+        --lx-accent2: #667eea;
+        --lx-soft: #f8f9ff;
+        --lx-shadow: 0 10px 30px rgba(15, 23, 43, 0.06);
+        --lx-radius: 18px;
+
+        --c-info: #0066cc;
+        --c-warn: #ff9500;
+        --c-danger: #ff3b30;
+        --c-success: #34c759;
+      }
+
+      body {
+        background: var(--lx-bg);
+      }
+
+      .lx-i-info {
+        color: var(--c-info) !important;
+      }
+
+      .lx-i-warn {
+        color: var(--c-warn) !important;
+      }
+
+      .lx-i-danger {
+        color: var(--c-danger) !important;
+      }
+
+      .lx-i-success {
+        color: var(--c-success) !important;
+      }
+
+      /* общий контейнер как у .container (чтобы ширина совпадала с шапкой) */
+      .lx-wrap {
+        width: 100%;
+        padding: 22px 0 44px;
+        margin: 0;
+        max-width: none;
+      }
+
+      /* hero */
+      .lx-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 24px;
+        padding: 2.6rem 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.10);
+        margin-bottom: 18px;
+      }
+
+      .lx-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 50%);
+        animation: lx-rot 20s linear infinite;
+      }
+
+      @keyframes lx-rot {
+        from {
+          transform: rotate(0)
+        }
+
+        to {
+          transform: rotate(360deg)
+        }
+      }
+
+      .lx-hero-content {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        max-width: 980px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .lx-hero h1 {
+        margin: 0 0 .55rem 0;
+        font-size: 2.15rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+      }
+
+      .lx-hero p {
+        margin: 0;
+        opacity: .92;
+        font-size: 1.05rem;
+      }
+
+      .lx-hero-actions {
+        margin-top: 1.2rem;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .lx-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 750;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        transition: .2s;
+      }
+
+      .lx-btn-primary {
+        background: #fff;
+        color: #4f46e5;
+        box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.25);
+      }
+
+      .lx-btn-primary:hover {
+        transform: translateY(-1px);
+      }
+
+      .lx-btn-ghost {
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .lx-btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      /* секции как "полосы", чтобы не было кучи прямоугольников */
+      .lx-section {
+        padding: 26px 0;
+      }
+
+      .lx-section+.lx-section {
+        border-top: 1px solid rgba(229, 229, 231, 0.95);
+      }
+
+      .lx-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--lx-text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 12px 0;
+      }
+
+      .lx-lead {
+        color: var(--lx-muted);
+        margin: 0;
+      }
+
+      .lx-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .lx-col-4 {
+        grid-column: span 4;
+      }
+
+      .lx-col-6 {
+        grid-column: span 6;
+      }
+
+      .lx-col-12 {
+        grid-column: span 12;
+      }
+
+      @media (max-width: 980px) {
+
+        .lx-col-4,
+        .lx-col-6 {
+          grid-column: span 12;
+        }
+      }
+
+      /* внутренние блоки без рамок — мягкие */
+      .lx-mini {
+        background: rgba(255, 255, 255, 0.62);
+        border: 1px solid rgba(229, 229, 231, 0.65);
+        border-radius: 16px;
+        padding: 16px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .lx-mini h4 {
+        margin: 0 0 6px 0;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--lx-text);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .lx-mini p {
+        margin: 0;
+        color: var(--lx-muted);
+      }
+
+      .lx-list {
+        margin: 10px 0 0 0;
+        padding-left: 18px;
+        color: var(--lx-muted);
+      }
+
+      .lx-list li {
+        margin: 6px 0;
+      }
+
+      .lx-callout {
+        margin-top: 14px;
+        background: var(--lx-soft);
+        border: 1px solid rgba(229, 229, 231, 0.95);
+        border-radius: 16px;
+        padding: 16px;
+        position: relative;
+      }
+
+      .lx-callout::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        bottom: 10px;
+        width: 4px;
+        border-radius: 4px;
+        background: linear-gradient(135deg, var(--lx-accent2), var(--lx-accent));
+        opacity: .85;
+      }
+
+      .lx-cta {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 14px;
+      }
+
+      .lx-linkbtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 14px;
+        background: #fff;
+        border: 1px solid rgba(229, 229, 231, 0.95);
+        color: var(--lx-accent);
+        text-decoration: none;
+        font-weight: 750;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        transition: .2s;
+      }
+
+      .lx-linkbtn:hover {
+        background: #fafafe;
+        border-color: rgba(109, 91, 208, 0.35);
+        transform: translateY(-1px);
+      }
+    </style>
+    <!-- Плавающие элементы для фона -->
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+
+    <div class="particles-container"></div>
+
+    <style>
+      :root {
+        --lx-bg: #f5f5f7;
+        --lx-card: #ffffff;
+        --lx-border: #e5e5e7;
+        --lx-text: #1d1d1f;
+        --lx-muted: #515154;
+        --lx-accent: #6d5bd0;
+        --lx-accent2: #667eea;
+        --lx-soft: #f8f9ff;
+        --lx-shadow: 0 12px 30px rgba(15, 23, 43, 0.08);
+        --lx-radius: 18px;
+      }
+
+      .lx-page {
+        padding: 18px 0 44px;
+      }
+
+      /* Большие секции: меньше прямоугольников */
+      .lx-block {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(229, 229, 231, 0.8);
+        border-radius: 24px;
+        box-shadow: var(--lx-shadow);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        padding: 22px;
+        margin-top: 18px;
+      }
+
+      .lx-block-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+        font-weight: 750;
+        color: var(--lx-text);
+        margin: 0 0 14px 0;
+      }
+
+      .lx-lead {
+        margin: 0;
+        color: var(--lx-muted);
+        line-height: 1.65;
+      }
+
+      .lx-hero2 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 24px;
+        padding: 30px 22px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.10);
+        margin-top: 6px;
+      }
+
+      .lx-hero2::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 50%);
+        animation: lx-rot 20s linear infinite;
+      }
+
+      @keyframes lx-rot {
+        from {
+          transform: rotate(0)
+        }
+
+        to {
+          transform: rotate(360deg)
+        }
+      }
+
+      .lx-hero2-inner {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: #fff;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+
+      .lx-hero2 h1 {
+        margin: 0 0 8px 0;
+        font-size: 2.05rem;
+        font-weight: 820;
+        letter-spacing: -0.02em;
+      }
+
+      .lx-hero2 p {
+        margin: 0;
+        opacity: .92;
+        font-size: 1.05rem;
+      }
+
+      .lx-actions {
+        margin-top: 14px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .lx-btn2 {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 14px;
+        font-weight: 750;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        transition: .2s;
+      }
+
+      .lx-btn2.primary {
+        background: #fff;
+        color: #4f46e5;
+        box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.25);
+      }
+
+      .lx-btn2.primary:hover {
+        transform: translateY(-1px);
+      }
+
+      .lx-btn2.ghost {
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        backdrop-filter: blur(10px);
+      }
+
+      .lx-btn2.ghost:hover {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .lx-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .lx-col-6 {
+        grid-column: span 6;
+      }
+
+      .lx-col-12 {
+        grid-column: span 12;
+      }
+
+      @media (max-width: 980px) {
+        .lx-col-6 {
+          grid-column: span 12;
+        }
+      }
+
+      .lx-mini {
+        background: rgba(255, 255, 255, 0.62);
+        border: 1px solid rgba(229, 229, 231, 0.65);
+        border-radius: 16px;
+        padding: 16px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .lx-mini h3,
+      .lx-mini h4 {
+        margin: 0 0 6px 0;
+        color: var(--lx-text);
+      }
+
+      .lx-mini p,
+      .lx-mini li {
+        margin: 0;
+        color: var(--lx-muted);
+        line-height: 1.65;
+      }
+
+      .lx-list {
+        margin: 10px 0 0 0;
+        padding-left: 18px;
+      }
+
+      .lx-list li {
+        margin: 6px 0;
+      }
+
+      .lx-callout {
+        margin-top: 14px;
+        background: var(--lx-soft);
+        border: 1px solid rgba(229, 229, 231, 0.95);
+        border-radius: 16px;
+        padding: 16px;
+        position: relative;
+      }
+
+      .lx-callout::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        bottom: 10px;
+        width: 4px;
+        border-radius: 4px;
+        background: linear-gradient(135deg, var(--lx-accent2), var(--lx-accent));
+        opacity: .85;
+      }
+
+      /* Иконка в заголовке карточки (Lexify style) */
+      .lx-hicon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        margin-right: 10px;
+
+        background: rgba(102, 126, 234, 0.14);
+        border: 1px solid rgba(102, 126, 234, 0.22);
+        box-shadow: 0 10px 24px rgba(15, 23, 43, 0.06);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        color: #4f46e5;
+        flex: 0 0 auto;
+      }
+
+      .lx-mini h3,
+      .lx-mini h4 {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        /* gap не нужен, тк margin-right у иконки */
+        line-height: 1.25;
+      }
+
+      /* Варианты по смыслу (чуть разные оттенки) */
+      .lx-hicon.info {
+        background: rgba(0, 102, 204, 0.12);
+        border-color: rgba(0, 102, 204, 0.18);
+        color: #0066cc;
+      }
+
+      .lx-hicon.success {
+        background: rgba(52, 199, 89, 0.12);
+        border-color: rgba(52, 199, 89, 0.18);
+        color: #34c759;
+      }
+
+      .lx-hicon.warn {
+        background: rgba(255, 149, 0, 0.14);
+        border-color: rgba(255, 149, 0, 0.18);
+        color: #ff9500;
+      }
+
+      .lx-hicon.purple {
+        background: rgba(109, 91, 208, 0.14);
+        border-color: rgba(109, 91, 208, 0.22);
+        color: #6d5bd0;
+      }
+
+      .payment-model-list {
+        counter-reset: pm;
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0 0;
+      }
+
+      .payment-model-list li {
+        counter-increment: pm;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin: 10px 0;
+      }
+
+      .payment-model-list li::before {
+        content: counter(pm);
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        color: #4f46e5;
+        background: rgba(102, 126, 234, .14);
+        border: 1px solid rgba(102, 126, 234, .22);
+        flex: 0 0 auto;
+      }
+    </style>
+
+    <div class="container">
+      <div class="lx-page">
+        <!-- БЛОК 1: Бизнесу + Индивидуальный подход (одна большая секция) -->
+        <section class="lx-block">
+          <h2 class="lx-block-title"><span class="animated-icon">💼</span> Бизнесу</h2>
+          <p class="lx-lead">
+            Мы предлагаем инновационное решение Lexify для автоматизации процесса нормоконтроля документации, которое
+            значительно сокращает трудозатраты и минимизирует количество ошибок. Наша система разработана с учетом
+            актуальных требований к документообороту на предприятиях и адаптируется под специфику вашей организации.
+          </p>
+
+          <div class="lx-callout">
+            <strong style="display:flex;align-items:center;gap:10px;color:#1d1d1f;">
+              <span class="animated-icon">🤝</span> Индивидуальный подход
+            </strong>
+            <p class="lx-lead" style="margin-top:8px;">
+              Мы придерживаемся принципа индивидуальной работы с каждым клиентом. Наши специалисты внимательно изучат
+              специфику вашего бизнеса и предложат оптимальное решение. Помимо стандартных возможностей, мы всегда
+              открыты к дополнительным пожеланиям и готовы реализовать функциональность, необходимую именно для вашей
+              компании.
+            </p>
+          </div>
+        </section>
+
+        <!-- БЛОК 2: Что предлагаем (одна большая секция, внутри мини-блоки) -->
+        <section class="lx-block" id="offer">
+          <h2 class="lx-block-title"><span class="animated-icon">🔍</span> Что мы предлагаем</h2>
+
+          <div class="lx-grid">
+            <div class="lx-col-6">
+              <div class="lx-mini">
+                <h3><span class="lx-hicon purple"><i class="fas fa-sliders"></i></span>Кастомные проверки под ваши
+                  требования</h3>
+                <p>Мы понимаем, что у каждой организации есть свои уникальные требования к оформлению документации.
+                  Именно поэтому Lexify предлагает настройку проверок в соответствии с вашими корпоративными
+                  стандартами, отраслевыми нормативами и специфическими требованиями.</p>
+              </div>
+            </div>
+
+            <div class="lx-col-6">
+              <div class="lx-mini">
+                <h3><span class="lx-hicon info"><i class="fas fa-plug"></i></span>
+                  Интеграция с существующими системами документооборота</h3>
+                <p>Lexify легко интегрируется с вашими текущими системами документооборота, что обеспечивает бесшовный
+                  переход и минимальное время на адаптацию сотрудников к новой технологии. Наше решение работает как
+                  часть вашей существующей ИТ-инфраструктуры.</p>
+              </div>
+            </div>
+
+            <div class="lx-col-6">
+              <div class="lx-mini">
+                <h3><span class="lx-hicon success"><i class="fas fa-brain"></i></span>
+                  ИИ-проверки документации (опциональный функционал)</h3>
+                <p>Как дополнительная опция, наша система может использовать передовые технологии ИИ-проверки
+                  документации для улучшения качества проверки и обнаружения ошибок. Это может значительно повысить
+                  эффективность проверки и уменьшить количество времени на исправление ошибок.</p>
+                <ul class="lx-list">
+                  <li>Проверка на однозначность формулировок</li>
+                  <li>Оценка когнитивного восприятия текста</li>
+                  <li>Соответствие деловому стилю</li>
+                  <li>Выявление противоречий и несоответствий</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="lx-col-6">
+              <div class="lx-mini">
+                <h3><span class="lx-hicon warn"><i class="fas fa-headset"></i></span>
+                  Техническая поддержка</h3>
+                <p>Мы обеспечиваем полноценное сопровождение нашего продукта:</p>
+                <ul class="lx-list">
+                  <li>Оперативная помощь в решении технических вопросов</li>
+                  <li>Регулярные обновления системы</li>
+                  <li>Консультации по оптимальному использованию возможностей Lexify</li>
+                  <li>Обучение персонала работе с системой</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- БЛОК 3: Модель оплаты + Эффективность + Контакты (одна большая секция) -->
+        <section class="lx-block">
+          <h2 class="lx-block-title"><span class="animated-icon">💰</span> Модель оплаты</h2>
+          <p class="lx-lead">Наша ценовая политика прозрачна и состоит из двух компонентов:</p>
+          <ol class="payment-model-list" style="margin-top:10px;">
+            <li>Единоразовая плата за настройку и внедрение системы</li>
+            <li>Регулярная абонентская плата за использование сервиса (подписка)</li>
+          </ol>
+          <p class="lx-lead" style="margin-top:10px;">
+            <strong>Обратите внимание</strong>: Приведенные ниже цены являются ориентировочными и могут отличаться в
+            зависимости от конкретных требований и масштаба вашего проекта. Для получения точного коммерческого
+            предложения, пожалуйста, свяжитесь с нашими специалистами.
+          </p>
+
+          <div class="lx-callout">
+            <h2 class="lx-block-title" style="margin:0 0 10px 0;"><span class="animated-icon">📊</span> Пример расчета
+              экономической эффективности Lexify</h2>
+            <p style="margin:0 0 14px 0;"><em>Ниже представлен примерный расчет экономической эффективности от внедрения
+                системы Lexify для среднего предприятия:</em></p>
+
+            <div class="lx-grid" style="margin-top:0;">
+              <div class="lx-col-6">
+                <div class="lx-mini">
+                  <h4>1) Текущие затраты на нормоконтроль:</h4>
+                  <ul class="lx-list">
+                    <li>3-5 штатных нормоконтролеров с окладом 80 000 - 120 000 руб./месяц</li>
+                    <li>Годовые затраты: 2 880 000 - 7 200 000 рублей</li>
+                    <li>Дополнительные скрытые издержки: задержки проектов, ошибки, доработки</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="lx-col-6">
+                <div class="lx-mini">
+                  <h4>2) Внедрение Lexify:</h4>
+                  <ul class="lx-list">
+                    <li>Срок согласования ТЗ и внедрения: 2-3 месяца</li>
+                    <li>Годовая стоимость владения (единоразовая выплата + подписка): 600 000 - 1 100 000 рублей в
+                      зависимости от требований заказчика</li>
+                  </ul>
+                  <p style="margin-top:10px;">
+                    <strong>Примечание</strong>: Указанные цены являются ориентировочными и могут меняться в зависимости
+                    от сложности внедрения, объема необходимых настроек и дополнительных требований.
+                  </p>
+                </div>
+              </div>
+
+              <div class="lx-col-6">
+                <div class="lx-mini">
+                  <h4>3) После внедрения Lexify:</h4>
+                  <ul class="lx-list">
+                    <li>Сокращение штата нормоконтролеров на 50-70%</li>
+                    <li>Высвобождение рабочего времени технических специалистов</li>
+                    <li>Устранение простоев при ожидании проверки</li>
+                    <li>Сокращение сроков выполнения проектов</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="lx-col-6">
+                <div class="lx-mini">
+                  <h4>4) Финансовый результат:</h4>
+                  <ul class="lx-list">
+                    <li>Годовая экономия: 1 700 000 - 5 000 000 рублей</li>
+                    <li>Окупаемость инвестиций: 3-8 месяцев для среднего предприятия</li>
+                  </ul>
+                  <p style="margin-top:10px;">
+                    Учитывая, что дальнейшее владение будет состоять лишь из абонентской платы за подписку, на более
+                    длительном сроке Lexify многократно окупит первоначальные инвестиции и обеспечит существенную
+                    экономию для вашей компании.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="lx-block-title" style="margin-top:18px;"><span class="animated-icon">📞</span> Свяжитесь с нами
+          </h2>
+          <p class="lx-lead">Чтобы обсудить условия сотрудничества и получить индивидуальное предложение с точными
+            ценами, свяжитесь с нами. Мы предоставим детальную консультацию и ответим на все интересующие вас вопросы.
+          </p>
+
+          <div class="lx-callout" style="text-align:center;">
+            <strong style="font-size:1.2em; color:#1d1d1f;">lexiqo_app@mail.ru</strong>
+            <div class="cta-buttons" style="margin-top:12px;">
+              <a href="mailto:lexiqo_app@mail.ru" class="glow-button animated-button">Написать письмо</a>
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>

@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="yandex-verification" content="247f21928a1f1467" />
+    <title>Lexify — Статистика</title>
+
+    <link rel="manifest" href="https://check.lexiqo.ru/static/file/manifest.json" crossorigin="use-credentials" />
+    <link rel="icon" type="image/x-icon" href="https://check.lexiqo.ru/static/img/fav.png">
+    <link rel="apple-touch-icon" href="https://check.lexiqo.ru/static/img/fav.ico">
+    <link rel="icon" type="image/svg+xml" href="https://check.lexiqo.ru/static/img/fav.svg">
+
+    <meta name="description" content="Статистика проверок документов" />
+    <meta name="application-name" content="Lexify" lang="ru" />
+    <meta name="keywords" content="spellcheck,grammar,document,statistics" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Alexander Plesovskikh" />
+
+    <meta property="og:title" content="Lexify — Статистика" />
+    <meta property="og:description" content="Статистика проверок документов" />
+    <meta property="og:image" content="https://check.lexiqo.ru/static/img/poster.jpg" />
+    <meta property="og:url" content="https://check.lexiqo.ru/stats" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        /* Bootstrap-like Grid System with CSS Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 12px;
+            padding-left: 12px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        @media (min-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .col-1 {
+            grid-column: span 1;
+        }
+
+        .col-2 {
+            grid-column: span 2;
+        }
+
+        .col-3 {
+            grid-column: span 3;
+        }
+
+        .col-4 {
+            grid-column: span 4;
+        }
+
+        .col-5 {
+            grid-column: span 5;
+        }
+
+        .col-6 {
+            grid-column: span 6;
+        }
+
+        .col-7 {
+            grid-column: span 7;
+        }
+
+        .col-8 {
+            grid-column: span 8;
+        }
+
+        .col-9 {
+            grid-column: span 9;
+        }
+
+        .col-10 {
+            grid-column: span 10;
+        }
+
+        .col-11 {
+            grid-column: span 11;
+        }
+
+        .col-12 {
+            grid-column: span 12;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-1 {
+                grid-column: span 1;
+            }
+
+            .col-md-2 {
+                grid-column: span 2;
+            }
+
+            .col-md-3 {
+                grid-column: span 3;
+            }
+
+            .col-md-4 {
+                grid-column: span 4;
+            }
+
+            .col-md-5 {
+                grid-column: span 5;
+            }
+
+            .col-md-6 {
+                grid-column: span 6;
+            }
+
+            .col-md-7 {
+                grid-column: span 7;
+            }
+
+            .col-md-8 {
+                grid-column: span 8;
+            }
+
+            .col-md-9 {
+                grid-column: span 9;
+            }
+
+            .col-md-10 {
+                grid-column: span 10;
+            }
+
+            .col-md-11 {
+                grid-column: span 11;
+            }
+
+            .col-md-12 {
+                grid-column: span 12;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .col-lg-1 {
+                grid-column: span 1;
+            }
+
+            .col-lg-2 {
+                grid-column: span 2;
+            }
+
+            .col-lg-3 {
+                grid-column: span 3;
+            }
+
+            .col-lg-4 {
+                grid-column: span 4;
+            }
+
+            .col-lg-5 {
+                grid-column: span 5;
+            }
+
+            .col-lg-6 {
+                grid-column: span 6;
+            }
+
+            .col-lg-7 {
+                grid-column: span 7;
+            }
+
+            .col-lg-8 {
+                grid-column: span 8;
+            }
+
+            .col-lg-9 {
+                grid-column: span 9;
+            }
+
+            .col-lg-10 {
+                grid-column: span 10;
+            }
+
+            .col-lg-11 {
+                grid-column: span 11;
+            }
+
+            .col-lg-12 {
+                grid-column: span 12;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
+        }
+
+        .navbar-wrapper {
+            width: 100%;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            margin-bottom: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .navbar {
+            background-color: #ffffffdd;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem;
+            box-shadow: 0 12px 28px -8px rgba(0, 32, 64, 0.15), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.2s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .brand {
+            font-size: 1.7rem;
+            font-weight: 650;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1e2b4f, #2c3e77);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding: 0.2rem 0.8rem 0.2rem 0.3rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .brand i {
+            font-size: 1.8rem;
+            color: #2c3e77;
+            background: rgba(44, 62, 119, 0.1);
+            border-radius: 50%;
+            padding: 0.3rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.9rem;
+            color: #1e2b4f;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px transparent rgba(44, 62, 119, 0.2);
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 50%;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            transition: 0.15s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-toggle:hover {
+            background: #ffffff;
+            border-color: #2c3e77;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            padding: 0.3rem 0.2rem;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+            font-weight: 520;
+            padding: 0.65rem 1.2rem;
+            border-radius: 40px;
+            background: transparent;
+            color: #1e293b;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+
+        .nav-link i {
+            font-size: 1rem;
+            color: #4f5e7b;
+        }
+
+        .nav-link:hover {
+            background: rgba(44, 62, 119, 0.08);
+            border-color: rgba(44, 62, 119, 0.2);
+            color: #0f172b;
+        }
+
+        .profile-item {
+            margin-left: 0.3rem;
+        }
+
+        .profile-link {
+            background: #ffffff;
+            border: 1px solid rgba(44, 62, 119, 0.25);
+            border-radius: 50px;
+            padding: 0.55rem 1.2rem 0.55rem 1rem;
+            font-weight: 550;
+            gap: 0.5rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .profile-link i {
+            font-size: 1.4rem;
+            color: #1e2b4f;
+        }
+
+        .profile-link:hover {
+            background: #f5f8ff;
+            border-color: #2c3e77;
+        }
+
+        @media screen and (max-width: 780px) {
+            .navbar {
+                border-radius: 40px;
+                padding: 0.5rem 1rem;
+            }
+
+            .navbar-container {
+                position: relative;
+            }
+
+            .nav-toggle {
+                display: flex;
+                order: 3;
+            }
+
+            .brand {
+                order: 1;
+                font-size: 1.5rem;
+            }
+
+            .nav-menu {
+                order: 4;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                margin-top: 1rem;
+                padding: 1rem 0.8rem;
+                border-radius: 40px;
+                border: 1px solid rgba(255, 255, 255, 0.8);
+                display: none;
+            }
+
+            #nav-toggle-checkbox:checked~.nav-menu {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+                width: 100%;
+                gap: 0.3rem;
+            }
+
+            .nav-item {
+                width: 100%;
+                padding: 0.2rem 0;
+            }
+
+            .nav-link {
+                width: 100%;
+                justify-content: flex-start;
+                padding: 0.9rem 1.5rem;
+                background: rgba(255, 255, 255, 0.3);
+                border: 1px solid transparent;
+            }
+
+            .profile-item {
+                margin-left: 0;
+                margin-top: 0.3rem;
+                width: 100%;
+            }
+
+            .profile-link {
+                justify-content: center;
+                background: #ffffffcc;
+                width: 100%;
+            }
+        }
+
+        /* Statistics page specific styles */
+        .stats-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .stats-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e5e7;
+            height: 100%;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.75rem;
+        }
+
+        .card-title i {
+            color: #667eea;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: #86868b;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-name {
+            color: #515154;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .badge-primary {
+            background: #e8f1fd;
+            color: #0066cc;
+        }
+
+        .badge-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 1rem;
+            background: #f8f9fa;
+            color: #515154;
+            font-weight: 600;
+            border-bottom: 2px solid #e5e5e7;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e5e7;
+            color: #1d1d1f;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        .chart-container {
+            margin-top: 1rem;
+            height: 300px;
+            position: relative;
+        }
+
+        .date-range {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .stats-header {
+                padding: 1.5rem;
+            }
+
+            .stats-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+
+        .row {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar-wrapper">
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <input type="checkbox" id="nav-toggle-checkbox" style="display: none;">
+                    <a href="/" class="brand">
+                        <i class="fas fa-check"></i> Lexify
+                    </a>
+                    <label for="nav-toggle-checkbox" class="nav-toggle" aria-label="toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </label>
+                    <div class="nav-menu">
+                        <ul class="nav-links">
+                            <li class="nav-item"><a href="/" class="nav-link">старт</a></li>
+                            <li class="nav-item"><a href="/doc" class="nav-link">проверить</a></li>
+                            <li class="nav-item"><a href="/faq" class="nav-link">faq</a></li>
+                            <li class="nav-item"><a href="/stats" class="nav-link">данные</a></li>
+                            <li class="nav-item"><a href="https://app.lexiqo.ru/oldcheck" class="nav-link">прошлая
+                                    версия</a></li>
+                        </ul>
+                        <div class="profile-item">
+                            <a href="/profile" class="nav-link profile-link">
+                                <i class="fas fa-user-circle"></i> профиль
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+        <div style="position: fixed; bottom: 24px; right: 24px; z-index: 9999;">
+            <a href="https://chat.lexiqo.ru"
+                style="display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 15px 30px -8px rgba(102, 126, 234, 0.5); text-decoration: none;"
+                onmouseover="this.style.transform='scale(1.12) rotate(5deg)'; this.style.boxShadow='0 20px 35px -5px rgba(102, 126, 234, 0.7)'"
+                onmouseout="this.style.transform='scale(1) rotate(0deg)'; this.style.boxShadow='0 15px 30px -8px rgba(102, 126, 234, 0.5)'"
+                target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-comment" style="font-size: 28px; color: white;"></i>
+            </a>
+        </div>
+
+        <!-- Statistics Header -->
+        <div class="row">
+            <div class="col-12">
+                <div class="stats-header">
+                    <h1><i class="fas fa-chart-bar"></i> Статистика проверок</h1>
+                    <p>Анализ документов по дням недели и часам</p>
+                    {% if date_range.first_date %}
+                    <div class="date-range">
+                        <i class="fas fa-calendar"></i>
+                        {{ date_range.first_date|date:"d.m.Y" }} — {{ date_range.last_date|date:"d.m.Y" }}
+                        ({{ date_range.total_days }} дн.)
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-file-alt"></i> Всего документов
+                    </div>
+                    <div class="stat-number">{{ summary_stats.total_documents_all_time }}</div>
+                    <div class="stat-label">за все время</div>
+                    <div class="stat-row">
+                        <span class="stat-name">В среднем в день</span>
+                        <span class="stat-value">{{ summary_stats.avg_documents_per_day }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-exclamation-triangle" style="color: #dc3545;"></i> Орфография
+                    </div>
+                    <div class="stat-number">{{ summary_stats.total_bad_words_all_time }}</div>
+                    <div class="stat-label">всего найдено</div>
+                    <div class="stat-row">
+                        <span class="stat-name">В среднем на документ</span>
+                        <span class="stat-value">{{ summary_stats.avg_bad_words_per_document }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-book" style="color: #ffc107;"></i> Библиография
+                    </div>
+                    <div class="stat-number">{{ summary_stats.total_bad_bibliography_all_time }}</div>
+                    <div class="stat-label">всего найдено</div>
+                    <div class="stat-row">
+                        <span class="stat-name">В среднем на документ</span>
+                        <span class="stat-value">{{ summary_stats.avg_bad_bibliography_per_document }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-paint-brush" style="color: #28a745;"></i> Ошибки стиля
+                    </div>
+                    <div class="stat-number">{{ summary_stats.total_styles_error_all_time }}</div>
+                    <div class="stat-label">всего найдено</div>
+                    <div class="stat-row">
+                        <span class="stat-name">В среднем на документ</span>
+                        <span class="stat-value">{{ summary_stats.avg_styles_error_per_document }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day of Week Charts -->
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calendar-week"></i> Документы по дням недели
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="dayOfWeekChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-line"></i> Ошибки по дням недели
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="dayOfWeekErrorsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day of Week Stats Table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-table"></i> Детальная статистика по дням недели
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>День</th>
+                                    <th>Всего док.</th>
+                                    <th>Дней с данными</th>
+                                    <th>В среднем в день</th>
+                                    <th>Ср. ошибок орфографии</th>
+                                    <th>Ср. ошибок в библиогр.</th>
+                                    <th>Ср. ошибок стиля</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for day, stats in day_of_week_stats.items %}
+                                <tr>
+                                    <td><strong>{{ day }}</strong></td>
+                                    <td>{{ stats.total_documents }}</td>
+                                    <td>{{ stats.total_days }}</td>
+                                    <td>{{ stats.avg_documents_per_day }}</td>
+                                    <td>
+                                        <span
+                                            class="badge {% if stats.avg_bad_words > 10 %}badge-danger{% elif stats.avg_bad_words > 5 %}badge-warning{% else %}badge-success{% endif %}">
+                                            {{ stats.avg_bad_words }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span
+                                            class="badge {% if stats.avg_bad_bibliography > 5 %}badge-danger{% elif stats.avg_bad_bibliography > 2 %}badge-warning{% else %}badge-success{% endif %}">
+                                            {{ stats.avg_bad_bibliography }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span
+                                            class="badge {% if stats.avg_styles_error > 20 %}badge-danger{% elif stats.avg_styles_error > 10 %}badge-warning{% else %}badge-success{% endif %}">
+                                            {{ stats.avg_styles_error }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hourly Charts -->
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clock"></i> Документы по часам
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="hourlyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-chart-bar"></i> Ошибки по часам
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="hourlyErrorsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hourly Stats Table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-clock"></i> Почасовая статистика
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Час</th>
+                                    <th>Всего док.</th>
+                                    <th>Ср. ошибок орфографии</th>
+                                    <th>Ср. ошибок в библиогр.</th>
+                                    <th>Ср. ошибок стиля</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for hour_stat in hourly_stats %}
+                                <tr>
+                                    <td><strong>{{ hour_stat.hour }}</strong></td>
+                                    <td>{{ hour_stat.documents }}</td>
+                                    <td>{{ hour_stat.avg_bad_words }}</td>
+                                    <td>{{ hour_stat.avg_bad_bibliography }}</td>
+                                    <td>{{ hour_stat.avg_styles_error }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Detailed Data -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-title">
+                        <i class="fas fa-calendar-day"></i> Последние 30 дней
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Дата</th>
+                                    <th>Документов</th>
+                                    <th>Ошибок орфографии</th>
+                                    <th>Ошибок в библиогр.</th>
+                                    <th>Ошибок стиля</th>
+                                    <th>Ср. ошибок орфографии</th>
+                                    <th>Ср. ошибок в библиогр.</th>
+                                    <th>Ср. ошибок стиля</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for day in daily_stats_detail %}
+                                <tr>
+                                    <td><strong>{{ day.date }}</strong></td>
+                                    <td>{{ day.documents }}</td>
+                                    <td>
+                                        <span
+                                            class="badge {% if day.bad_words > 100 %}badge-danger{% elif day.bad_words > 50 %}badge-warning{% endif %}">
+                                            {{ day.bad_words }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span
+                                            class="badge {% if day.bad_bibliography > 10 %}badge-danger{% elif day.bad_bibliography > 5 %}badge-warning{% endif %}">
+                                            {{ day.bad_bibliography }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span
+                                            class="badge {% if day.styles_error > 50 %}badge-danger{% elif day.styles_error > 20 %}badge-warning{% endif %}">
+                                            {{ day.styles_error }}
+                                        </span>
+                                    </td>
+                                    <td>{{ day.avg_bad_words }}</td>
+                                    <td>{{ day.avg_bad_bibliography }}</td>
+                                    <td>{{ day.avg_styles_error }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Parse JSON data
+        const dayOfWeekLabels = JSON.parse('{{ day_of_week_labels|safe }}');
+        const dayOfWeekData = JSON.parse('{{ day_of_week_data|safe }}');
+        const dayOfWeekBadWords = JSON.parse('{{ day_of_week_bad_words|safe }}');
+        const dayOfWeekBadBib = JSON.parse('{{ day_of_week_bad_bib|safe }}');
+        const dayOfWeekStyles = JSON.parse('{{ day_of_week_styles|safe }}');
+
+        const hourLabels = JSON.parse('{{ hour_labels|safe }}');
+        const hourDocumentData = JSON.parse('{{ hour_document_data|safe }}');
+        const hourBadWordsData = JSON.parse('{{ hour_bad_words_data|safe }}');
+        const hourBadBibData = JSON.parse('{{ hour_bad_bib_data|safe }}');
+        const hourStylesData = JSON.parse('{{ hour_styles_data|safe }}');
+
+        // Day of Week Chart
+        new Chart(document.getElementById('dayOfWeekChart'), {
+            type: 'bar',
+            data: {
+                labels: dayOfWeekLabels,
+                datasets: [{
+                    label: 'Среднее количество документов',
+                    data: dayOfWeekData,
+                    backgroundColor: 'rgba(102, 126, 234, 0.7)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Документов в день'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Day of Week Errors Chart
+        new Chart(document.getElementById('dayOfWeekErrorsChart'), {
+            type: 'bar',
+            data: {
+                labels: dayOfWeekLabels,
+                datasets: [
+                    {
+                        label: 'Ошибки орфографии',
+                        data: dayOfWeekBadWords,
+                        backgroundColor: 'rgba(220, 53, 69, 0.7)',
+                        borderRadius: 5
+                    },
+                    {
+                        label: 'Ошибки библиографии',
+                        data: dayOfWeekBadBib,
+                        backgroundColor: 'rgba(255, 193, 7, 0.7)',
+                        borderRadius: 5
+                    },
+                    {
+                        label: 'Ошибки стиля',
+                        data: dayOfWeekStyles,
+                        backgroundColor: 'rgba(40, 167, 69, 0.7)',
+                        borderRadius: 5
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Среднее количество'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Hourly Chart
+        new Chart(document.getElementById('hourlyChart'), {
+            type: 'line',
+            data: {
+                labels: hourLabels,
+                datasets: [{
+                    label: 'Среднее количество документов',
+                    data: hourDocumentData,
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: 'rgba(102, 126, 234, 1)',
+                    pointBorderColor: 'white',
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Документов в час'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Час дня'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Hourly Errors Chart
+        new Chart(document.getElementById('hourlyErrorsChart'), {
+            type: 'line',
+            data: {
+                labels: hourLabels,
+                datasets: [
+                    {
+                        label: 'Ошибки орфографии',
+                        data: hourBadWordsData,
+                        borderColor: 'rgba(220, 53, 69, 1)',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    },
+                    {
+                        label: 'Ошибки библиографии',
+                        data: hourBadBibData,
+                        borderColor: 'rgba(255, 193, 7, 1)',
+                        backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    },
+                    {
+                        label: 'Ошибки стиля',
+                        data: hourStylesData,
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        tension: 0.4,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Среднее количество'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Час дня'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
